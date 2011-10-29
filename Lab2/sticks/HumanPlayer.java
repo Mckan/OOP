@@ -11,13 +11,34 @@ public class HumanPlayer
     
     public HumanPlayer(Sticks sticks, UserInterface ui)
     {
-    
+        this.sticks = sticks;
+        this.ui = ui;
     }
 
     
     
     public int move()
     {
-    
+        int nr;
+        
+        while(1 != 0)
+        {
+            ui.howManySticksMsg();
+            nr = ui.nextInt();
+            
+            if(nr == 1 || nr == 2)
+            {
+                sticks.take(nr);
+                break;
+            }
+            else
+            {
+                ui.illegalMoveMsg();
+                
+            }
+            
+        
+        }
+        return sticks.sticksLeft();
     }
 }

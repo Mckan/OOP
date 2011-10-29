@@ -2,8 +2,8 @@
 /**
  * Write a description of class GameEngine here.
  * 
- * @author 
- * @version 
+ * @author Martin Augustsson
+ * @version 0.2
  */
 public class GameEngine
 {
@@ -14,12 +14,27 @@ public class GameEngine
 
     public GameEngine()
     {
-    
+        sticks = new Sticks();
+        ui = new UserInterface();
+        computerPlayer = new ComputerPlayer(sticks);
+        humanPlayer = new HumanPlayer(sticks, ui);
+        
     }
     
     public int runGame()
     {
-    
+        while(1 == 1)
+        {
+            ui.sticksLeftMsg(sticks.sticksLeft());
+            if(humanPlayer.move() == 0)
+            {
+                ui.computerWinMsg();
+            }
+            else if (computerPlayer.move() == 0)
+            {
+                ui.playerWinMsg();
+            }
+        }
     }
     
     

@@ -1,2 +1,6 @@
 #BlueJ class context
-numComments=0
+comment0.params=sticks
+comment0.target=ComputerPlayer(Sticks)
+comment1.params=
+comment1.target=int\ move()
+numComments=2
