@@ -29,12 +29,15 @@ public class GameEngine
             if(humanPlayer.move() == 0)
             {
                 ui.computerWinMsg();
+                break;
             }
             else if (computerPlayer.move() == 0)
             {
                 ui.playerWinMsg();
+                break;
             }
         }
+        return 0;
     }
     
     

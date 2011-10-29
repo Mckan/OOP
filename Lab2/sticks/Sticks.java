@@ -35,9 +35,9 @@ public class Sticks
     {
         if( n == 1 || n == 2)
         {
-            if( n <= sticksLeft )
+            sticksLeft = sticksLeft - n;
+            if(sticksLeft >= 0 )
             {
-                sticksLeft = sticksLeft - n;
                 return sticksLeft;
             }
             else
