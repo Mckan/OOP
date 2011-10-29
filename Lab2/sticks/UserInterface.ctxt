@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=UserInterface()
+comment1.params=
+comment1.target=int\ nextInt()
+comment2.params=
+comment2.target=void\ howManySticksMsg()
+comment3.params=left
+comment3.target=void\ sticksLeftMsg(int)
+comment4.params=
+comment4.target=void\ illegalMoveMsg()
+comment5.params=
+comment5.target=void\ computerWinMsg()
+comment6.params=
+comment6.target=void\ playerWinMsg()
+numComments=7

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ nextInt()
+comment1.params=
+comment1.target=void\ howManySticksMsg()
+comment2.params=left
+comment2.target=void\ sticksLeftMsg(int)
+comment3.params=
+comment3.target=void\ illegalMoveMsg()
+comment4.params=
+comment4.target=void\ computerWinMsg()
+comment5.params=
+comment5.target=void\ playerWinMsg()
+comment6.params=msg
+comment6.target=void\ popUpMsg(java.lang.String)
+numComments=7

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=n
+comment0.target=Sticks(int)
+comment1.params=
+comment1.target=Sticks()
+comment2.params=
+comment2.target=void\ newGame()
+comment3.params=
+comment3.target=int\ sticksLeft()
+comment4.params=n
+comment4.target=int\ take(int)
+numComments=5

@@ -1,0 +1,1 @@
+Står kommenterat i javafilerna där jag har ändrat eller lagt till kod.
