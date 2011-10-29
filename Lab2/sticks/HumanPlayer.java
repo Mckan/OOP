@@ -26,7 +26,7 @@ public class HumanPlayer
             ui.howManySticksMsg();
             nr = ui.nextInt();
             
-            if(nr == 1 || nr == 2)
+            if( (nr == 1 || nr == 2) &&  (nr <= sticks.sticksLeft()) )
             {
                 sticks.take(nr);
                 break;

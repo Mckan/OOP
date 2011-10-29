@@ -26,7 +26,14 @@ public class ComputerPlayer
         }
         else
         {
-            sticks.take(2);
+            if(sticks.sticksLeft() == 1)
+            {
+                sticks.take(1);
+            }
+            else
+            {
+                sticks.take(2);
+            }
         }
         return sticks.sticksLeft();
     }
