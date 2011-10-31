@@ -1,0 +1,23 @@
+31/10 - 11
+
+Object interaction
+
+Main concepts
+  - Abstraction and modularisation
+  - Object references
+  - Object creation
+  - Class diagrams and Object diagrams
+  - Object copying, shallow and deep copy
+  - Method calling, internal and external
+  - mm
+
+___________________________________________________
+
+A digital clock
+
+Skriva ett program som visar digital tid, hur gör man?
+
+- Abstraction (fördjupa dig i bok och ppt).
+- Modularization ( -||-)
+
+ 

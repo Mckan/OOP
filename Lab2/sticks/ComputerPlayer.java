@@ -16,14 +16,15 @@ public class ComputerPlayer
     
     public int move()
     {
-        if(sticks.sticksLeft() == 3)
+        if( (sticks.sticksLeft() >= 6) || (sticks.sticksLeft() == 3) )
         {
             sticks.take(2);
         }
-        else if(sticks.sticksLeft() == 2)
+        else
         {
             sticks.take(1);
         }
+        /*
         else
         {
             if(sticks.sticksLeft() == 1)
@@ -35,6 +36,7 @@ public class ComputerPlayer
                 sticks.take(2);
             }
         }
+        */
         return sticks.sticksLeft();
     }
 }

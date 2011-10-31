@@ -23,6 +23,7 @@ public class GameEngine
     
     public int runGame()
     {
+        //sticks.newGame();
         while(1 == 1)
         {
             ui.sticksLeftMsg(sticks.sticksLeft());
