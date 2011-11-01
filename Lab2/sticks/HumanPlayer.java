@@ -21,23 +21,19 @@ public class HumanPlayer
     {
         int nr;
         
-        while(1 != 0)
+        while(true)
         {
             ui.howManySticksMsg();
             nr = ui.nextInt();
             
-            if( (nr == 1 || nr == 2) &&  (nr <= sticks.sticksLeft()) )
+            if(sticks.take(nr) >= 0)
             {
-                sticks.take(nr);
                 break;
             }
             else
             {
                 ui.illegalMoveMsg();
-                
             }
-            
-        
         }
         return sticks.sticksLeft();
     }

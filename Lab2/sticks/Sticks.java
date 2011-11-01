@@ -8,6 +8,11 @@ public class Sticks
 {
     private int maxNoOfSticks;
     private int sticksLeft;
+       
+    public Sticks()
+    {
+        this(21);
+    }
     
     public Sticks( int n)
     {
@@ -15,11 +20,6 @@ public class Sticks
         sticksLeft = n;
     }
     
-    public Sticks()
-    {
-        maxNoOfSticks = 21;
-        sticksLeft = 21;
-    }
     
     public void newGame()
     {
@@ -35,9 +35,9 @@ public class Sticks
     {
         if( n == 1 || n == 2)
         {
-            sticksLeft = sticksLeft - n;
-            if(sticksLeft >= 0 )
+            if(sticksLeft >= n )
             {
+                sticksLeft = sticksLeft - n;
                 return sticksLeft;
             }
             else

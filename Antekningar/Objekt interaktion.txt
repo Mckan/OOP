@@ -20,4 +20,11 @@ Skriva ett program som visar digital tid, hur gör man?
 - Abstraction (fördjupa dig i bok och ppt).
 - Modularization ( -||-)
 
- 
+
+ClockDisplay <>------------> NumberDisplay
+			  2
+
+<> = Diamantpil = "Har"
+
+________________________________________________________
+

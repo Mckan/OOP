@@ -23,8 +23,7 @@ public class GameEngine
     
     public int runGame()
     {
-        //sticks.newGame();
-        while(1 == 1)
+        while(true)
         {
             ui.sticksLeftMsg(sticks.sticksLeft());
             if(humanPlayer.move() == 0)
