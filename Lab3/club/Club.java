@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 /**
  * Store details of club memberships.
  * 
@@ -7,13 +11,14 @@
 public class Club
 {
     // Define any necessary fields here ...
+    private LinkedList<Membership> membersList;
     
     /**
      * Constructor for objects of class Club
      */
     public Club()
     {
-        // Initialise any fields here ...
+        membersList = new LinkedList<Membership>();
         
     }
 
