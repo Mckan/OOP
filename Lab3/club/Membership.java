@@ -48,7 +48,7 @@ public class Membership
     /**
      * @return Member's email.
      */
-    public String gerEmail()
+    public String getEmail()
     {
         return email;
     }
