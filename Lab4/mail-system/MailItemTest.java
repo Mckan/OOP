@@ -14,7 +14,7 @@ import org.junit.Test;
 public class MailItemTest
 {
 
-    private MailItem mail1; 
+    
     
     /**
      * Default constructor for test class MailItemTest
@@ -31,7 +31,7 @@ public class MailItemTest
     @Before
     public void setUp()
     {
-       mail1 = new MailItem("Martin", "Mr.X", "test", "Hej!");
+       
     }
 
     /**
@@ -45,11 +45,12 @@ public class MailItemTest
     }
     
     @Test
-    public void testMailItem()
+    public void testAccessors()
     {
-        assertEquals("Martin",mail1.getFrom());
-        assertEquals("Mr.X",mail1.getTo());
-        assertEquals("test",mail1.getSubject());
-        assertEquals("Hej!",mail1.getMessage());
+        MailItem mail1 = new MailItem("FROM", "TO", "SUBJECT", "BODY");
+        assertEquals("FROM",mail1.getFrom());
+        assertEquals("TO",mail1.getTo());
+        assertEquals("SUBJECT",mail1.getSubject());
+        assertEquals("BODY",mail1.getMessage());
     }
 }

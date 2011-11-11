@@ -63,6 +63,8 @@ public class MailServer
      */
     public void post(MailItem item)
     {
+        //kolla om mailet är giltigt mha en boolskt hjälpmetod
+        //om giltigt lägg till i box
         items.add(item);
     }
 }
