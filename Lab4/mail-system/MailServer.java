@@ -37,6 +37,16 @@ public class MailServer
         }
         return count;
     }
+    
+    /**
+     * Check how many messages there is on the server
+     * @return How many messages
+     */
+    
+    public int howManyMessages()
+    {
+        return items.size();
+    }
 
     /**
      * Return the next mail item for a user or null if there
@@ -65,6 +75,22 @@ public class MailServer
     {
         //kolla om mailet är giltigt mha en boolskt hjälpmetod
         //om giltigt lägg till i box
+        if(validMessage(item))
+        {
         items.add(item);
+        }
+    }
+    
+    private boolean validMessage(MailItem item)
+    {
+        if(item.getFrom().isEmpty())
+        {
+            return false;
+        }
+        else if (item.getTo().isEmpty())
+        {
+            return false;
+        }
+        return true;
     }
 }
