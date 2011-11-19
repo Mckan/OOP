@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
+import java.util.*;
+
 
 /**
  * A simple model of a mail server. The server is able to receive
@@ -12,16 +11,66 @@ public class MailServer
 {
     // Storage for the arbitrary number of mail items to be stored
     // on the server.
-    private List<MailItem> items;
+    private HashMap <String, ArrayList<MailItem>> mailboxes;
 
     /**
      * Construct a mail server.
      */
     public MailServer()
     {
-        items = new ArrayList<MailItem>();
+        mailboxes = new HashMap<String, ArrayList<MailItem>>();
     }
-
+    
+    /**
+     * Create a mailbox for a single user
+     * @param the name of the new user
+     * @return 1 if the creation succeeded
+     * 0 if a mailbox with that name already existed
+     */
+    public int createMailbox(String user)
+    {
+        if(mailboxes.containsKey(user))
+        {
+            return 0;
+        }
+        
+        mailboxes.put(user, new ArrayList<MailItem>());
+        return 0;
+    }
+    
+    /**
+     * Create mailboxes for users
+     * @param an array containing the names of the new users
+     * @return the number of successfully created mailboxes,
+     * this number will be less than the number of
+     * specified users if some mailboxes already existed
+     */
+    public int createMailbox(String[] users)
+    {
+        int count = 0;
+        for(String user : users)
+        {
+            if(!mailboxes.containsKey(user))
+            {
+                mailboxes.put(user, new ArrayList<MailItem>());
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    /**
+     * Retrieves the mailbox for a user
+     *
+     * @param who the owner of the requested mailbox
+     * @return the mailbox belonging to who,
+     * null if it does not exist
+     */
+    private ArrayList<MailItem> getMailbox(String who)
+    {
+        return mailboxes.get(who);
+    }
+    
     /**
      * Return how many mail items are waiting for a user.
      * @param who The user to check for.
@@ -29,12 +78,7 @@ public class MailServer
      */
     public int howManyMailItems(String who)
     {
-        int count = 0;
-        for(MailItem item : items) {
-            if(item.getTo().equals(who)) {
-                count++;
-            }
-        }
+        
         return count;
     }
     
