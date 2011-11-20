@@ -19,6 +19,7 @@ public class MailServer
     public MailServer()
     {
         mailboxes = new HashMap<String, ArrayList<MailItem>>();
+        mailboxes.put("Postmaster", new ArrayList<MailItem>());
     }
     
     /**
@@ -143,10 +144,46 @@ public class MailServer
                 {
                     mailbox.add(item);
                 }
-        }   }
+                else
+                {
+                    returnToSender(item, receiver.trim());
+                }
+            }   
+        }
     }
     
-    private boolean validMessage(MailItem item)
+    
+    /**
+     * Return a message with unknown receiver to the sender
+     *
+     * @param the message to be returned
+     */
+    private void returnToSender(MailItem message, String receiver)
+    {
+        ArrayList<MailItem> mailbox = getMailbox(message.getFrom());
+        
+        if(mailbox != null)
+        {
+            String newMessage = "Transcript of original message follows:\n" +
+            "---------------------------------------" +
+            message.toString().replace("\n","\n> ");
+            
+            String subject = "Unknown receiver: " + receiver;
+            
+            MailItem returnMessage = 
+            new MailItem("Postmaster",message.getFrom(),subject,newMessage);
+            
+            mailbox.add(returnMessage);
+        }
+        
+    }
+    
+    /**
+     * Checks if the message is valid
+     * 
+     * @return true if valid else false
+     */
+     private boolean validMessage(MailItem item)
     {
         String[] receivers = item.getTo();
         
@@ -162,6 +199,17 @@ public class MailServer
                 return false;
             }
         }
+        
+        if(item.getSubject().matches("(?i:.*spam.*)"))
+        {
+            return false;
+        }
+        
+        if(item.getMessage().matches("(?i:.*v.*i.*[a|@].*g.*r.*[a|@].*)"))
+        {
+            return false;
+        }
+        
         return true;
     }
 }

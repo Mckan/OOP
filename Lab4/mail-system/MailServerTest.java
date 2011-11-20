@@ -53,10 +53,10 @@ public class MailServerTest
         mess2User1to2 = new MailItem("user1", "user2", "2", "");
         
         messTwoReceivers = new MailItem("user1", "user2, user3", "", "");
-        //messUnknownReceiver = new MailItem("user1", "unknown", "foo", "bar"); 
+        messUnknownReceiver = new MailItem("user1", "unknown", "foo", "bar"); 
         
-        //messSpamSubj = new MailItem("user1", "user2", "xxxSpAmyyy", ""); 
-        //messSpamBody = new MailItem("user1", "user2", "", "xxxvI a Gr @A yyy");
+        messSpamSubj = new MailItem("user1", "user2", "xxxSpAmyyy", ""); 
+        messSpamBody = new MailItem("user1", "user2", "", "xxxvI a Gr @A yyy");
     }
 
     /**
@@ -131,7 +131,35 @@ public class MailServerTest
         assertEquals(1, mailServer.howManyMailItems("user3"));
         mailServer.howManyMessages();
     }
+
+    @Test
+    public void testReturnToSender()
+    {
+        mailServer.post(messUnknownReceiver);
+        assertEquals(1, mailServer.howManyMailItems("user1"));
+    }
+
+    @Test
+    public void testSpamInSubject()
+    {
+        mailServer.post(messTwoReceivers);
+        assertEquals(2, mailServer.howManyMessages());
+        mailServer.post(messSpamSubj);
+        assertEquals(2, mailServer.howManyMessages());
+    }
+
+    @Test
+    public void testSpamInBody()
+    {
+        mailServer.post(messTwoReceivers);
+        assertEquals(2, mailServer.howManyMessages());
+        mailServer.post(messSpamBody);
+        assertEquals(2, mailServer.howManyMessages());
+    }
 }
+
+
+
 
 
 

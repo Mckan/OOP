@@ -69,9 +69,18 @@ public class MailItem
      */
     public void print()
     {
-        System.out.println("From: " + from);
-        System.out.println("To: " + to);
-        System.out.println("Subject: " + subject);
-        System.out.println("Message: " + message);
+        System.out.println(toString());
+    }
+    
+    /**
+     * compile a text representation of this object
+     */
+    public String toString()
+    {
+        return
+        "\nFrom:     " + from +
+        "\nTo:       " + to +
+        "\nSubject:  " + subject +
+        "\nMessage:\n" + message;
     }
 }
