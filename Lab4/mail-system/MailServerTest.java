@@ -42,9 +42,9 @@ public class MailServerTest
     {
         
         mailServer = new MailServer();
-        //mailServer.createMailbox("user1");
-        //mailServer.createMailbox("user2"); 
-        //mailServer.createMailbox("user3");
+        mailServer.createMailbox("user1");
+        mailServer.createMailbox("user2"); 
+        mailServer.createMailbox("user3");
         
         messEmptyFrom = new MailItem("", "foo", "", "");
         messEmptyTo = new MailItem("foo", "", "", "");

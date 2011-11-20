@@ -35,7 +35,7 @@ public class MailServer
         }
         
         mailboxes.put(user, new ArrayList<MailItem>());
-        return 0;
+        return 1;
     }
     
     /**
@@ -72,14 +72,38 @@ public class MailServer
     }
     
     /**
+     * Return the next mail item for a user or null if there
+     * are none.
+     * @param who The user requesting their next item.
+     * @return The user's next item.
+     */
+    public MailItem getNextMailItem(String who)
+    {
+        ArrayList<MailItem> mailbox = getMailbox(who);
+        
+        if(!mailbox.isEmpty())
+        {
+            // Creat a index
+            int i;
+            i = mailbox.size()-1;
+        
+            MailItem mail = mailbox.get(i);
+            mailbox.remove(i);
+            
+            return mail;
+        }
+        return null;
+    }
+    
+    /**
      * Return how many mail items are waiting for a user.
      * @param who The user to check for.
      * @return How many items are waiting.
      */
     public int howManyMailItems(String who)
     {
-        
-        return count;
+        ArrayList<MailItem> tempMailbox = getMailbox(who);
+        return tempMailbox.size();
     }
     
     /**
@@ -89,27 +113,16 @@ public class MailServer
     
     public int howManyMessages()
     {
-        return items.size();
+        int count = 0;
+        // Gå igenom alla mailboxes och titta hur många mailItems det finns
+        for(ArrayList<MailItem> mailbox : mailboxes.values())
+        {
+            count += mailbox.size();
+        }
+        
+        return count;
     }
 
-    /**
-     * Return the next mail item for a user or null if there
-     * are none.
-     * @param who The user requesting their next item.
-     * @return The user's next item.
-     */
-    public MailItem getNextMailItem(String who)
-    {
-        Iterator<MailItem> it = items.iterator();
-        while(it.hasNext()) {
-            MailItem item = it.next();
-            if(item.getTo().equals(who)) {
-                it.remove();
-                return item;
-            }
-        }
-        return null;
-    }
 
     /**
      * Add the given mail item to the message list.
@@ -121,7 +134,13 @@ public class MailServer
         //om giltigt lägg till i box
         if(validMessage(item))
         {
-        items.add(item);
+            String receiver = item.getTo();
+            ArrayList<MailItem> mailbox = getMailbox(receiver);
+            
+            if(mailbox != null)
+            {
+                mailbox.add(item);
+            }
         }
     }
     
