@@ -42,9 +42,10 @@ public class MailItem
     /**
      * @return The intended recipient of this message.
      */
-    public String getTo()
-    {
-        return to;
+    public String[] getTo()
+    {   
+        String[] temp = to.split(","); 
+        return temp;
     }
 
     /**

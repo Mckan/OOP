@@ -134,25 +134,33 @@ public class MailServer
         //om giltigt lägg till i box
         if(validMessage(item))
         {
-            String receiver = item.getTo();
-            ArrayList<MailItem> mailbox = getMailbox(receiver);
-            
-            if(mailbox != null)
+            String[] receivers = item.getTo();
+            for(String receiver : receivers)
             {
-                mailbox.add(item);
-            }
-        }
+                ArrayList<MailItem> mailbox = getMailbox(receiver.trim());
+            
+                if(mailbox != null)
+                {
+                    mailbox.add(item);
+                }
+        }   }
     }
     
     private boolean validMessage(MailItem item)
     {
+        String[] receivers = item.getTo();
+        
         if(item.getFrom().isEmpty())
         {
             return false;
         }
-        else if (item.getTo().isEmpty())
+        
+        for(String receiver : receivers)
         {
-            return false;
+            if (receiver.isEmpty())
+            {
+                return false;
+            }
         }
         return true;
     }

@@ -52,7 +52,7 @@ public class MailServerTest
         mess1User1to2 = new MailItem("user1", "user2", "1", "");
         mess2User1to2 = new MailItem("user1", "user2", "2", "");
         
-        //messTwoReceivers = new MailItem("user1", "user2, user3", "", "");
+        messTwoReceivers = new MailItem("user1", "user2, user3", "", "");
         //messUnknownReceiver = new MailItem("user1", "unknown", "foo", "bar"); 
         
         //messSpamSubj = new MailItem("user1", "user2", "xxxSpAmyyy", ""); 
@@ -92,7 +92,50 @@ public class MailServerTest
         mailServer.getNextMailItem("user2");
         assertEquals(1, mailServer.howManyMessages());
     }
+    
+
+    @Test
+    public void testMessageNotReadableToOthers()
+    {
+        mailServer.post(mess1User1to2);
+        mailServer.post(mess2User1to2);
+        assertNull(mailServer.getNextMailItem("user1"));
+    }
+
+    @Test
+    public void testCreateMailboxes()
+    {
+        String[] users = new String[100];
+        
+        for(int i = 0; i < 100; i++)
+        {
+            users[i] = "TestUser" + i; 
+        }
+        assertEquals(100, mailServer.createMailbox(users));
+        
+    }
+
+    @Test
+    public void testReceiveOrder()
+    {
+        mailServer.post(mess1User1to2);
+        mailServer.post(mess2User1to2);
+        assertEquals("2", mailServer.getNextMailItem("user2").getSubject());
+    }
+
+    @Test
+    public void testTwoReceivers()
+    {
+        mailServer.post(messTwoReceivers);
+        assertEquals(1, mailServer.howManyMailItems("user2"));
+        assertEquals(1, mailServer.howManyMailItems("user3"));
+        mailServer.howManyMessages();
+    }
 }
+
+
+
+
 
 
 

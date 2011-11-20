@@ -49,7 +49,7 @@ public class MailItemTest
     {
         MailItem mail1 = new MailItem("FROM", "TO", "SUBJECT", "BODY");
         assertEquals("FROM",mail1.getFrom());
-        assertEquals("TO",mail1.getTo());
+        assertEquals("TO",mail1.getTo()[0]);
         assertEquals("SUBJECT",mail1.getSubject());
         assertEquals("BODY",mail1.getMessage());
     }
